@@ -1,0 +1,86 @@
+<!DOCTYPE >
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> 福州大学坦克大战</title>
+		<link rel="stylesheet" type="text/css" href="./css/land_page.css" />
+        <script>     
+            window.onload=function(){
+                doubleBtn=document.getElementById('doubleBtn');
+                doubleBtn.onclick=function(){
+                    // location='./game.html';
+                    localStorage.setItem('model','1')
+                    localStorage.setItem('moveToBase','12000')   //不同的模式坦克转向基地的频率不同
+                    location="./double_game.html";
+
+                }
+
+                easyBtn=document.getElementById('easyBtn');
+                easyBtn.onclick=function(){
+                    // model=1;
+                    localStorage.setItem('model','1')
+                    localStorage.setItem('moveToBase','12000')   //不同的模式坦克转向基地的频率不同
+                    location="./game.html";
+                    // location="./test.html"
+                }
+
+                commonBtn=document.getElementById('commonBtn');
+                commonBtn.onclick=function(){
+                    // model=2;
+                    localStorage.setItem('model','2')
+                    localStorage.setItem('moveToBase','13000')
+                    location="./game.html";
+                }
+
+                diffBtn=document.getElementById('diffBtn');
+                diffBtn.onclick=function(){
+                    // model=3;
+                    localStorage.setItem('model','3')
+                    localStorage.setItem('moveToBase','15000')
+                    location="./game.html";
+                }
+            }
+
+        </script>
+	</head>
+	<body>
+        <div class="login_box" id="show">
+            <div v-show="home">
+			    <h2> 游戏模式选择</h2>
+                <br>
+                <div> <button id='singleBtn' @click="toggleIsShow">单人模式</button> </div>
+
+                <div id='doubleBtn'><button>双人模式</button></div>
+            </div>
+
+            <div v-show="model">
+                <h2> 人机难度选择</h2>
+                <br>
+                <div><button id='easyBtn'>简单模式</button></div>            
+                <br>
+                <div id='commonBtn'><button>普通模式</button></div>
+                <br>
+                <div id='diffBtn'><button>困难模式</button></div>
+            </div>
+            
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script>
+            var app=new Vue({
+                el:"#show",
+                data:{
+                    home:true,
+                    model:false
+                },
+                methods:{
+                    toggleIsShow:function() {
+                        this.home=!this.home;
+                        this.model=!this.model;
+                    }
+                },
+            })
+        </script>
+</body>
+</html>
+
